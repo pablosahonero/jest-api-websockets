@@ -1,0 +1,33 @@
+{
+  "name": "jest-supertest",
+  "version": "0.0.0",
+  "description": "jest-supertest",
+  "main": "app.js",
+  "author": {
+    "name": ""
+  },
+  "scripts": {
+    "coverage": "jest --coverage && cat ./coverage/lcov.info | coveralls",
+    "test": "jest",
+    "test-jenkins": "NODE_ENV=test jest --colors"
+  },
+  "jest": {
+    "testEnvironment": "node",
+    "coveragePathIgnorePatterns": [
+      "/node_modules/"
+    ],
+    "verbose": true,
+    "testResultsProcessor": "jest-jenkins-reporter"
+  },
+  "jestSonar": {
+    "reportPath": "reports",
+    "reportFile": "report.xml",
+    "indent": 4
+  },
+  "devDependencies": {
+    "jest": "^25.1.0",
+    "jest-jenkins-reporter": "^1.0.2",
+    "supertest": "^4.0.2",
+    "ws": "^7.2.1"
+  }
+}
