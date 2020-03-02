@@ -7,7 +7,6 @@
     "name": ""
   },
   "scripts": {
-    "coverage": "jest --coverage && cat ./coverage/lcov.info | coveralls",
     "test": "jest",
     "test-jenkins": "NODE_ENV=test jest --colors"
   },
