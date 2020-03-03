@@ -1,11 +1,16 @@
-var request = require('supertest').agent('https://jsonplaceholder.typicode.com');
+import { OK } from 'http-status-codes';
+import * as request from 'supertest';
+import configuration from '../configuration'
+import * as todoItems from './data/todos';
 
-describe('GET /reponse.json', function () {
-    it('Should return with the expected body.', async done => {
-        const response = await request.get('/todos/1');
-        expect(response.status).toBe(200);
-        expect(response.body.id).toBe(1);
-        expect(response.body.title).toEqual('delectus aut autem');
+describe('GET /todos', function () {
+    it('Should return item with the expected body.', async done => {
+        const expectedTodoItem = todoItems['expectedTodoItem'];
+        const response = await request(configuration.url).get('/todos/1');
+        expect(response.status).toBe(OK);
+        expect(response.body.id).toBe(expectedTodoItem.id);
+        expect(response.body.title).toBe(expectedTodoItem.title);
+        expect(response.body).toEqual(expectedTodoItem);
         done();
     })
 })
